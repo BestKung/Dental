@@ -7,6 +7,7 @@ package th.co.geniustree.dental.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,13 +15,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-
-
 
 /**
  *
@@ -28,75 +29,83 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 @Entity
 @Table(name = "EMPLOYEE")
-public class Employee implements Serializable{
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   private Integer id;
-   @Column(name = "EMAIL" , nullable = false,unique = true)
-   @NotBlank(message = "E-mail not Empty")
-   @Email(message = "E-mail Incompatible example@example.xom")
-   private String email;
-   @Column(name = "PASSWORD" , nullable = false)
-   @NotBlank(message = "Password not Empty")
-   private String password;
-   @Column(name = "PID" , nullable = false)
-   @NotBlank(message = "Personal ID not Empty")
-   private String pid;
-   @Column(name = "NAME_TH" , nullable = false)
-   @NotBlank(message = "Name(TH) not Empty")
-   private String nameTh;
-   @Column(name = "NAME_ENG")
-   private String nameEng;
-   @Column(name = "BIRTH_DATE")
-   private Date birthDate;
-   @Column(name = "SEX")
-   private String sex;
-   @Column(name = "BLOOD" , nullable = false)
-   @NotBlank(message = "Blood not Empty")
-   private String blood;
-   @Column(name = "MARRY_STATUS")
-   private String marryStatus;
-   @Column(name = "NATION" , nullable = false)
-   @NotBlank(message = "Nation not Empty")
-   private String nation;
-   @Column(name = "RACE" , nullable = false)
-   @NotBlank(message = "Race not Empty")
-   private String race;
-   @Column(name = "SOLDER_STATUS")
-   private String soldierStatus;
-   @Column(name = "ADDRESS_OF_PID")
-   private String addressOfPid;
-   @Column(name = "CURRENT_ADDRESS" , nullable = false)
-   @NotBlank(message = "Current Address not Empty")
-   private String currentAddress;
-   @Column(name = "TEL")
-   private String tel;
-   @Column(name = "MOBILE" , nullable = false)
-   @NotBlank(message = "Mobile not Empty")
-   private String mobile;
-   @Column(name = "START_WORK" , nullable = false)
-   @NotBlank(message = "Start Work not Empty")
-   private Date startWork;
-   @Column(name = "END_WORK")
-   private Date endWork;
-   @Column(name = "WORK_STATUS" , nullable = false)
-   @NotBlank(message = "Work Satus not Empty")
-   private String workStatus;
-   @Column(name = "PICTURE")
-   private String picture;
-   private boolean enable;
-   
-   @ManyToOne
-   @JoinColumn(name = "DEPARTMENT_ID")
-   private Department department;
-   
-   @OneToOne
-   @JoinColumn(name = "CONTACT_ID")
+public class Employee implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    @Column(name = "EMAIL", nullable = false, unique = true)
+    @NotBlank(message = "E-mail not Empty")
+    @Email(message = "E-mail Incompatible example@example.xom")
+    private String email;
+    @Column(name = "PASSWORD", nullable = false)
+    @NotBlank(message = "Password not Empty")
+    private String password;
+    @Column(name = "PID", nullable = false)
+    @NotBlank(message = "Personal ID not Empty")
+    private String pid;
+    @Column(name = "NAME_TH", nullable = false)
+    @NotBlank(message = "Name(TH) not Empty")
+    private String nameTh;
+    @Column(name = "NAME_ENG")
+    private String nameEng;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name = "BIRTH_DATE")
+    private Date birthDate;
+    @Column(name = "SEX")
+    private String sex;
+    @Column(name = "BLOOD", nullable = false)
+    @NotBlank(message = "Blood not Empty")
+    private String blood;
+    @Column(name = "MARRY_STATUS")
+    private String marryStatus;
+    @Column(name = "NATION", nullable = false)
+    @NotBlank(message = "Nation not Empty")
+    private String nation;
+    @Column(name = "RACE", nullable = false)
+    @NotBlank(message = "Race not Empty")
+    private String race;
+    @Column(name = "SOLDER_STATUS")
+    private String soldierStatus;
+    @Column(name = "ADDRESS_OF_PID")
+    private String addressOfPid;
+    @Column(name = "CURRENT_ADDRESS", nullable = false)
+    @NotBlank(message = "Current Address not Empty")
+    private String currentAddress;
+    @Column(name = "TEL")
+    private String tel;
+    @Column(name = "MOBILE", nullable = false)
+    @NotBlank(message = "Mobile not Empty")
+    private String mobile;
+    @Column(name = "START_WORK", nullable = false)
+    @NotBlank(message = "Start Work not Empty")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date startWork;
+    @Column(name = "END_WORK")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date endWork;
+    @Column(name = "WORK_STATUS", nullable = false)
+    @NotBlank(message = "Work Satus not Empty")
+    private String workStatus;
+    @Column(name = "PICTURE")
+    private String picture;
+    private boolean enable;
+
+    @ManyToOne
+    @JoinColumn(name = "DEPARTMENT_ID")
+    private Department department;
+
+    @OneToOne
+    @JoinColumn(name = "CONTACT_ID")
     private Contact contact;
-   
-   @OneToOne
-   @JoinColumn(name = "BANK_ID")
-   private Bank bank;
+
+    @OneToOne
+    @JoinColumn(name = "BANK_ID")
+    private Bank bank;
+
+    @ManyToMany
+    @Column(name = "ROLE")
+    private List<Role> roles;
 
     public Integer getId() {
         return id;
@@ -298,6 +307,14 @@ public class Employee implements Serializable{
         this.bank = bank;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -319,6 +336,5 @@ public class Employee implements Serializable{
         }
         return true;
     }
-   
-   
+
 }

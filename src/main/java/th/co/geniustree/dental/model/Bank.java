@@ -20,7 +20,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "BANK")
-public class Bank implements Serializable{
+public class Bank implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -84,6 +85,5 @@ public class Bank implements Serializable{
         }
         return true;
     }
-    
-    
+
 }

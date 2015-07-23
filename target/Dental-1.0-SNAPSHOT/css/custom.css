@@ -1,0 +1,16 @@
+.btn-custom-yello{
+    padding: 5px 30px;
+    background: #2196f3;
+    color: white;
+    border-radius: 5px;
+    border: solid 2px white;
+}
+.btn-custom-yello:hover{
+    background: #69f0ae;
+    color: white;
+}
+.btn-custom-yello:active{
+    position: relative;
+    top: 1px;
+}
+

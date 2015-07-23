@@ -20,7 +20,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "CONTACT")
-public class Contact implements Serializable{
+public class Contact implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -84,6 +85,5 @@ public class Contact implements Serializable{
         }
         return true;
     }
-    
-    
+
 }

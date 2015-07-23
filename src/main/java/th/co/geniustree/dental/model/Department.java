@@ -80,6 +80,5 @@ public class Department implements Serializable {
         }
         return true;
     }
-    
-    
+
 }

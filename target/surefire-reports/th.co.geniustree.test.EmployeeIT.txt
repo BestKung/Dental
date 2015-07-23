@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: th.co.geniustree.test.EmployeeIT
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.817 sec - in th.co.geniustree.test.EmployeeIT
