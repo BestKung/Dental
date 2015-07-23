@@ -1,3 +1,6 @@
+body{
+    background: #f4fcff;
+}
 .navbar-custom{
     background: #03a9f4;
     height: 36px;
@@ -16,14 +19,14 @@ a.button{
     background: white;
     color: #03a9f4;
     border-bottom: 2px solid #03a9f4;
-    border-right: 2px solid #03a9f4;
-    border-left: 2px solid #03a9f4;
+   
 }
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
     background: white;
 }
 a.dropdown-toggle.topic{
     height: 50px;
+    background: #03a9f4;
 }
 .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
     background: #b3e5fc;
@@ -31,9 +34,4 @@ a.dropdown-toggle.topic{
 .sub-menu:hover{
     border: solid 2px white;
 }
-/*.dropdown:hover .dropdown-menu {
-    display: block;
-}
-ul.dropdown-menu:active{
-    visibility: hidden;
-}*/
+

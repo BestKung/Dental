@@ -109,9 +109,6 @@ public class EmployeeIT {
     @Test
     public void findEmployeeShoudReturnOne() {
         List<Employee> findAll = employeeRepo.findAll();
-        for (int i = 0; i < findAll.size(); i++) {
-            System.out.println("--------------------->" + findAll.get(i).toString());
-        }
         Assertions.assertThat(findAll.size()).isEqualTo(1);
     }
 
