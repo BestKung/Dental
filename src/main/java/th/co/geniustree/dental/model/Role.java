@@ -6,6 +6,7 @@
 package th.co.geniustree.dental.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -19,4 +20,36 @@ import javax.persistence.Table;
 public class Role implements Serializable{
     @Id
     private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.role);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Role other = (Role) obj;
+        if (!Objects.equals(this.role, other.role)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
