@@ -6,25 +6,27 @@
 package th.co.geniustree.dental.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import th.co.geniustree.dental.model.Employee;
-import th.co.geniustree.dental.repo.EmployeeRepo;
+import th.co.geniustree.dental.model.Authority;
+import th.co.geniustree.dental.repo.AuthorityRepo;
 
 /**
  *
  * @author Best
  */
 @RestController
-public class EmployeeController {
+public class AuthorityController {
     
     @Autowired
-    private EmployeeRepo employeeRepo;
+    private AuthorityRepo roleRepo;
     
-    @RequestMapping(value = "/saveemployee" , method = RequestMethod.POST)
-    public void saveEmployee(@RequestBody Employee employee){
-    employeeRepo.save(employee);
+    @RequestMapping(value = "/authority" , method = RequestMethod.GET)
+    public Page<Authority> getRole(Pageable pageable){
+     return roleRepo.findAll(pageable);
     }
+    
 }

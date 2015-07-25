@@ -3,6 +3,5 @@ th\co\geniustree\dental\model\Employee.class
 th\co\geniustree\dental\config\BeanValidationConfig.class
 th\co\geniustree\dental\App.class
 th\co\geniustree\dental\config\WebConfig.class
-th\co\geniustree\dental\model\Role.class
 th\co\geniustree\dental\model\Department.class
 th\co\geniustree\dental\model\Bank.class

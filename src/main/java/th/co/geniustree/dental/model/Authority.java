@@ -16,8 +16,8 @@ import javax.persistence.Table;
  * @author Best
  */
 @Entity
-@Table(name = "ROLE")
-public class Role implements Serializable {
+@Table(name = "AUTHORITY")
+public class Authority implements Serializable {
 
     @Id
     private String role;
@@ -45,7 +45,7 @@ public class Role implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Role other = (Role) obj;
+        final Authority other = (Authority) obj;
         if (!Objects.equals(this.role, other.role)) {
             return false;
         }

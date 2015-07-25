@@ -6,12 +6,12 @@
 package th.co.geniustree.dental.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import th.co.geniustree.dental.model.Role;
+import th.co.geniustree.dental.model.Authority;
 
 /**
  *
  * @author Best
  */
-public interface RoleRepo extends JpaRepository<Role,String>{
+public interface AuthorityRepo extends JpaRepository<Authority,String>{
     
 }

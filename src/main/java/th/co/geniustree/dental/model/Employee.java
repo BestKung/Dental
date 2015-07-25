@@ -105,7 +105,7 @@ public class Employee implements Serializable {
 
     @ManyToMany
     @Column(name = "ROLE")
-    private List<Role> roles;
+    private List<Authority> roles;
 
     public Integer getId() {
         return id;
@@ -307,11 +307,11 @@ public class Employee implements Serializable {
         this.bank = bank;
     }
 
-    public List<Role> getRoles() {
+    public List<Authority> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(List<Authority> roles) {
         this.roles = roles;
     }
 

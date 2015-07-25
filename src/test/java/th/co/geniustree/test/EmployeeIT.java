@@ -22,12 +22,12 @@ import th.co.geniustree.dental.model.Bank;
 import th.co.geniustree.dental.model.Contact;
 import th.co.geniustree.dental.model.Department;
 import th.co.geniustree.dental.model.Employee;
-import th.co.geniustree.dental.model.Role;
+import th.co.geniustree.dental.model.Authority;
 import th.co.geniustree.dental.repo.BankRepo;
 import th.co.geniustree.dental.repo.ContactRepo;
 import th.co.geniustree.dental.repo.DepartmentRepo;
 import th.co.geniustree.dental.repo.EmployeeRepo;
-import th.co.geniustree.dental.repo.RoleRepo;
+import th.co.geniustree.dental.repo.AuthorityRepo;
 
 /**
  *
@@ -47,15 +47,15 @@ public class EmployeeIT {
     @Autowired
     private ContactRepo contactRepo;
     @Autowired
-    private RoleRepo roleRepo;
+    private AuthorityRepo roleRepo;
 
     private Employee employee;
     private Contact contact;
     private Bank bank;
     private Department department;
-    private Role role1;
-    private Role role2;
-    private Role role3;
+    private Authority role1;
+    private Authority role2;
+    private Authority role3;
 
     @Before
     public void insertEmployee() {
@@ -75,9 +75,9 @@ public class EmployeeIT {
         bank.setAccountNumber("12345678909999");
         bankRepo.save(bank);
 
-        role1 = new Role();
-        role2 = new Role();
-        role3 = new Role();
+        role1 = new Authority();
+        role2 = new Authority();
+        role3 = new Authority();
         role1.setRole("Insert");
         role2.setRole("Update");
         role3.setRole("Delete");
@@ -112,9 +112,9 @@ public class EmployeeIT {
         Assertions.assertThat(findAll.size()).isEqualTo(1);
     }
 
-    public List<Role> selectRole() {
-        List<Role> roles = roleRepo.findAll();
-        List<Role> roleManaged = new ArrayList<Role>();
+    public List<Authority> selectRole() {
+        List<Authority> roles = roleRepo.findAll();
+        List<Authority> roleManaged = new ArrayList<Authority>();
         for (int i = 0; i < roles.size(); i++) {
             roleManaged.add(roles.get(i));
         }
